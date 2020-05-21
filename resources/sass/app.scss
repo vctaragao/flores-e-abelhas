@@ -1,0 +1,68 @@
+//
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+main {
+    width: 80%;
+    margin: auto;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+}
+
+.caret {
+    display: none !important;
+}
+
+form {
+    .months {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px;
+
+        .month label {
+            display: block;
+            font-family: Roboto;
+            font-weight: bold;
+            line-height: 10px;
+            letter-spacing: 0.03em;
+            color: #494949;
+            padding: 1rem .5rem;
+            background: #FFFFFF;
+            border: 0.537062px solid #D7D6D6;
+            box-sizing: border-box;
+            box-shadow: 0px 2.14825px 2.14825px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            transition: .5s;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .month input:checked+label {
+            background-color: #FFBED7;
+        }
+
+    }
+}
+
+
+/* === VIEWS === */
+@import "./views/flower_register";
+
+/* === HEADERS === */
+@import "./headers/register_header";
+
+/* === FOOTERS === */
+@import "./footers/register_footer";

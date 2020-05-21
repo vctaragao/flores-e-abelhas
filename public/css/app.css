@@ -1,0 +1,108 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+main {
+  width: 80%;
+  margin: auto;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+}
+
+.caret {
+  display: none !important;
+}
+
+form .months {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+form .months .month label {
+  display: block;
+  font-family: Roboto;
+  font-weight: bold;
+  line-height: 10px;
+  letter-spacing: 0.03em;
+  color: #494949;
+  padding: 1rem 0.5rem;
+  background: #FFFFFF;
+  border: 0.537062px solid #D7D6D6;
+  box-sizing: border-box;
+  box-shadow: 0px 2.14825px 2.14825px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  transition: 0.5s;
+}
+
+form .months .month label:hover {
+  cursor: pointer;
+}
+
+form .months .month input:checked + label {
+  background-color: #FFBED7;
+}
+
+/* === VIEWS === */
+
+header {
+  width: 100vw;
+  height: 20vh;
+}
+
+header h1 {
+  margin: 0;
+  text-align: center;
+}
+
+main.register_flower_container #bees {
+  border: 1px solid black;
+}
+
+/* === HEADERS === */
+
+.register_header_container {
+  position: relative;
+}
+
+.register_header_container img {
+  position: absolute;
+  top: -260px;
+  left: -30px;
+  height: 349.5px;
+  transform: matrix(-0.96, 0.28, 0.28, 0.96, 0, 0);
+  z-index: -1;
+  max-width: initial;
+}
+
+.register_header_container h1 {
+  margin-top: 3rem;
+  color: white;
+  font-size: 29.286px;
+  font-weight: bold;
+  line-height: 38px;
+  letter-spacing: 0.03em;
+}
+
+/* === FOOTERS === */
+
+.register_footer_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.register_footer_container img {
+  width: 30%;
+}
+
