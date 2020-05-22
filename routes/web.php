@@ -1,8 +1,8 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
-use App\Month;
-use App\Bee;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +15,6 @@ use App\Bee;
 */
 
 Route::get('/', function () {
-    $months = Month::all();
-    $bees = Bee::all();
-    return view('register_flower', compact('months', 'bees'));
-});
+Route::get('flower/create', 'FlowerController@create')->name('flower.create');
+Route::post('flower', 'FlowerController@store')->name('flower.store');
+// Route::post('flower', 'FlowerController@store');

@@ -1,3 +1,5 @@
+@import "./variables";
+
 //
 html,
 body {
@@ -25,6 +27,47 @@ footer {
 }
 
 form {
+
+    small {
+        color: $error-color;
+    }
+
+    .input-field {
+        label {
+            color: $strong-text-color;
+            transition: .5s;
+        }
+    }
+
+    textarea,
+    input[type="text"]:not(.browser-default) {
+        border: $submit-border !important;
+        padding-left: .5rem;
+        box-sizing: border-box;
+
+        &:focus {
+            box-shadow: 0 1px 0 0 $strong-color !important;
+        }
+
+        &:focus+label {
+            color: $strong-color !important;
+        }
+
+        &::placeholder {
+            color: $placeholder-text-color !important;
+        }
+    }
+
+    input[type="text"].error:not(.browser-default),
+    textarea.error {
+        border: 1px solid $error-color !important;
+    }
+
+    textarea {
+        resize: none;
+        padding-top: .5rem;
+    }
+
     .months {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
@@ -54,6 +97,41 @@ form {
             background-color: #FFBED7;
         }
 
+    }
+}
+
+.button {
+    background-color: $button-bg-color;
+    color: white;
+    box-shadow: 0px 1.54667px 1.54667px rgba(0, 0, 0, 0.25);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: .5s;
+
+    &:hover {
+        box-shadow: 0px 1.54667px 1.54667px rgba(0, 0, 0, 0.5);
+    }
+
+    &:focus {
+        background-color: $button-bg-color;
+    }
+}
+
+.cancel_button {
+    color: $strong-color;
+    border: 0.471658px solid $strong-color;
+    box-shadow: 0px 1.88663px 1.88663px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: .5s;
+    font-weight: bold;
+
+    &:hover {
+        box-shadow: 0px 1.88663px 1.88663px rgba(0, 0, 0, 0.5);
+    }
+
+    &:focus {
+        background-color: $button-bg-color;
     }
 }
 

@@ -10,7 +10,100 @@ header {
 
 main.register_flower_container {
 
-    #bees {
-        border: 1px solid black;
+    .bees {
+        display: flex;
+        justify-content: space-between;
+
+        #bees {
+            border: $submit-border;
+            min-height: 40px;
+            padding: .5rem;
+            width: 85%;
+
+            p {
+                margin: 0;
+                padding: .1rem .5rem;
+                border-radius: 4.63178px;
+                display: inline-block;
+                background-color: #D7D6D6;
+                margin-right: .5rem;
+            }
+        }
+    }
+
+    .input_container {
+        display: flex;
+        justify-content: space-between;
+
+        &_text_fields {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 2;
+        }
+
+        &_upload_field {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 30%;
+            margin-left: .5rem;
+
+            label {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: $strong-color;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .file_upload {
+                width: 54px;
+                height: 54px;
+                border-radius: 50%;
+                background-color: $primary-color;
+                position: relative;
+
+                span {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+
+            input[type="file"] {
+                visibility: hidden;
+                width: 0;
+                height: 0;
+            }
+        }
+    }
+
+    .action_buttons {
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        margin-left: auto;
+        margin-top: 3rem;
+
+        a {
+            display: block;
+            text-align: center;
+        }
+
+        button,
+        a {
+            flex-grow: 2;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+        }
+
+        button[type="submit"] {
+            margin-left: .5rem;
+        }
     }
 }

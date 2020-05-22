@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Flower;
+use App\Month;
+use App\Bee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FlowerController extends Controller
 {
@@ -14,7 +17,6 @@ class FlowerController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -24,7 +26,9 @@ class FlowerController extends Controller
      */
     public function create()
     {
-        //
+        $months = Month::all();
+        $bees = Bee::all();
+        return view('register_flower', compact('months', 'bees'));
     }
 
     /**
@@ -35,7 +39,33 @@ class FlowerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name'          => 'required|string|unique:flowers',
+            'species'       => 'required|string|unique:flowers',
+            'description'   => 'required|string',
+            'file'          => 'required|file|image',
+            'bees'          => 'required|array',
+            'months'        => 'required|array'
+        ], $this->error_messages);
+
+        if ($validator->fails())
+            return back()->withErrors($validator)->withInput();
+
+        $data = $request->all();
+
+        $path = $request->file('file')->store('flowers');
+
+        $flower = Flower::Create([
+            'name' => $data['name'],
+            'species'   => $data['species'],
+            'description' => $data['description'],
+            'image' => $path
+        ]);
+
+        $flower->bees()->attach($data['bees']);
+        $flower->months()->attach($data['months']);
+
+        return redirect('/');
     }
 
     /**
