@@ -23,6 +23,63 @@ footer {
   display: none !important;
 }
 
+form small {
+  color: #C14E4E;
+}
+
+form .input-field label {
+  color: #494949;
+  transition: 0.5s;
+}
+
+form textarea,
+form input[type=text]:not(.browser-default) {
+  border: 0.306244px solid #49494949 !important;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+}
+
+form textarea:focus,
+form input[type=text]:not(.browser-default):focus {
+  box-shadow: 0 1px 0 0 #C87092 !important;
+}
+
+form textarea:focus + label,
+form input[type=text]:not(.browser-default):focus + label {
+  color: #C87092 !important;
+}
+
+form textarea::-webkit-input-placeholder, form input[type=text]:not(.browser-default)::-webkit-input-placeholder {
+  color: #BEBBBB !important;
+}
+
+form textarea::-moz-placeholder, form input[type=text]:not(.browser-default)::-moz-placeholder {
+  color: #BEBBBB !important;
+}
+
+form textarea:-ms-input-placeholder, form input[type=text]:not(.browser-default):-ms-input-placeholder {
+  color: #BEBBBB !important;
+}
+
+form textarea::-ms-input-placeholder, form input[type=text]:not(.browser-default)::-ms-input-placeholder {
+  color: #BEBBBB !important;
+}
+
+form textarea::placeholder,
+form input[type=text]:not(.browser-default)::placeholder {
+  color: #BEBBBB !important;
+}
+
+form input[type=text].error:not(.browser-default),
+form textarea.error {
+  border: 1px solid #C14E4E !important;
+}
+
+form textarea {
+  resize: none;
+  padding-top: 0.5rem;
+}
+
 form .months {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -53,6 +110,41 @@ form .months .month input:checked + label {
   background-color: #FFBED7;
 }
 
+.button {
+  background-color: #FFB5C9;
+  color: white;
+  box-shadow: 0px 1.54667px 1.54667px rgba(0, 0, 0, 0.25);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.button:hover {
+  box-shadow: 0px 1.54667px 1.54667px rgba(0, 0, 0, 0.5);
+}
+
+.button:focus {
+  background-color: #FFB5C9;
+}
+
+.cancel_button {
+  color: #C87092;
+  border: 0.471658px solid #C87092;
+  box-shadow: 0px 1.88663px 1.88663px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: bold;
+}
+
+.cancel_button:hover {
+  box-shadow: 0px 1.88663px 1.88663px rgba(0, 0, 0, 0.5);
+}
+
+.cancel_button:focus {
+  background-color: #FFB5C9;
+}
+
 /* === VIEWS === */
 
 header {
@@ -65,8 +157,101 @@ header h1 {
   text-align: center;
 }
 
-main.register_flower_container #bees {
-  border: 1px solid black;
+main.register_flower_container .bees {
+  display: flex;
+  justify-content: space-between;
+}
+
+main.register_flower_container .bees #bees {
+  border: 0.306244px solid #49494949;
+  min-height: 40px;
+  padding: 0.5rem;
+  width: 85%;
+}
+
+main.register_flower_container .bees #bees p {
+  margin: 0;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4.63178px;
+  display: inline-block;
+  background-color: #D7D6D6;
+  margin-right: 0.5rem;
+}
+
+main.register_flower_container .input_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+main.register_flower_container .input_container_text_fields {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+}
+
+main.register_flower_container .input_container_upload_field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  margin-left: 0.5rem;
+}
+
+main.register_flower_container .input_container_upload_field label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #C87092;
+  text-align: center;
+  cursor: pointer;
+}
+
+main.register_flower_container .input_container_upload_field .file_upload {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: #FFBED7;
+  position: relative;
+}
+
+main.register_flower_container .input_container_upload_field .file_upload span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  cursor: pointer;
+}
+
+main.register_flower_container .input_container_upload_field input[type=file] {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+main.register_flower_container .action_buttons {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin-left: auto;
+  margin-top: 3rem;
+}
+
+main.register_flower_container .action_buttons a {
+  display: block;
+  text-align: center;
+}
+
+main.register_flower_container .action_buttons button,
+main.register_flower_container .action_buttons a {
+  flex-grow: 2;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+main.register_flower_container .action_buttons button[type=submit] {
+  margin-left: 0.5rem;
 }
 
 /* === HEADERS === */
