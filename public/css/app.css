@@ -254,6 +254,37 @@ main.register_flower_container .action_buttons button[type=submit] {
   margin-left: 0.5rem;
 }
 
+.main_home_container .bees {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+}
+
+.main_home_container .bees #bees {
+  border: 0.306244px solid #49494949;
+  min-height: 40px;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.main_home_container .bees #bees p {
+  margin: 0;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4.63178px;
+  display: inline-block;
+  background-color: #D7D6D6;
+  margin-right: 0.5rem;
+}
+
+.main_home_container .bees span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2%;
+  z-index: -1;
+}
+
 /* === HEADERS === */
 
 .register_header_container {
@@ -277,6 +308,29 @@ main.register_flower_container .action_buttons button[type=submit] {
   font-weight: bold;
   line-height: 38px;
   letter-spacing: 0.03em;
+}
+
+.main_header_container {
+  height: initial;
+  padding: 1rem 2rem;
+}
+
+.main_header_container .menu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main_header_container .menu .mobile_menu {
+  color: #C87092;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.main_header_container h1 {
+  color: #C87092;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 39px;
 }
 
 /* === FOOTERS === */
