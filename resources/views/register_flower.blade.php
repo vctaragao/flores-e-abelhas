@@ -1,4 +1,3 @@
-@extends('app')
 @extends('headers.register_header')
 @section('title', 'Cadastre flores')
 

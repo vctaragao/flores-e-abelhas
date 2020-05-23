@@ -1,0 +1,23 @@
+.main_header_container {
+    height: initial;
+    padding: 1rem 2rem;
+
+    .menu {
+        display: flex;
+        justify-content: flex-end;
+
+        .mobile_menu {
+            color: $strong-color;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    }
+
+
+    h1 {
+        color: $strong-color;
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 39px;
+    }
+}
