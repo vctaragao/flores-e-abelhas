@@ -1,0 +1,32 @@
+.main_home_container {
+    .bees {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        position: relative;
+
+        #bees {
+            border: $submit-border;
+            min-height: 40px;
+            padding: .5rem;
+            width: 100%;
+
+            p {
+                margin: 0;
+                padding: .1rem .5rem;
+                border-radius: 4.63178px;
+                display: inline-block;
+                background-color: #D7D6D6;
+                margin-right: .5rem;
+            }
+        }
+
+        span {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 2%;
+            z-index: -1;
+        }
+    }
+}

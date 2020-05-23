@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Flower;
 use App\Month;
 use App\Bee;
+use App\Http\Resources\FlowerResourceCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,6 +18,10 @@ class FlowerController extends Controller
      */
     public function index()
     {
+        $months = Month::all();
+        $bees = Bee::all();
+        $flowers = new FlowerResourceCollection(Flower::all());
+        return view('home', compact('flowers', 'bees', 'months'));
     }
 
     /**
