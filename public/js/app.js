@@ -19274,55 +19274,259 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/Flowers.js":
+/*!*********************************!*\
+  !*** ./resources/js/Flowers.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Flowers = /*#__PURE__*/function () {
+  function Flowers(flowers, parent_div) {
+    var months = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    var bee = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "Nenhuma";
+
+    _classCallCheck(this, Flowers);
+
+    this.flowers = flowers;
+    this.parent_div = parent_div;
+    this.months = months;
+    this.bee = bee;
+    this.filtered_flowers = flowers;
+    this.page_flowers = [];
+    this.pages = 1;
+    this.current = 1;
+    generatePagination(this);
+  }
+
+  _createClass(Flowers, [{
+    key: "createNewFlowers",
+    value: function createNewFlowers() {
+      var _this = this;
+
+      console.log("CreateNewFlowers");
+      console.log("----- OVER -----");
+      this.parent_div.innerHTML = "";
+      this.page_flowers.forEach(function (flower) {
+        var div = document.createElement("div");
+        div.classList.add('flower');
+        var img_div = document.createElement("div");
+        img_div.classList.add("flower_image");
+        var img = document.createElement("img");
+        img.setAttribute('src', flower.image);
+        img_div.appendChild(img);
+        var name = document.createElement("p");
+        name.innerHTML = flower.name;
+        div.appendChild(img_div);
+        div.appendChild(name);
+
+        _this.parent_div.appendChild(div);
+      });
+      renderPagination(this);
+    }
+  }, {
+    key: "goToPage",
+    value: function goToPage(page) {
+      console.log("Going to page:", page);
+
+      if (page > 0 && page !== this.current) {
+        var start = (page - 1) * 12;
+        var end = start + 12 > this.filtered_flowers.length ? this.filtered_flowers.length : start + 12;
+        var p = this.filtered_flowers.slice(start, end);
+
+        if (p.length) {
+          this.page_flowers = p.length ? p : this.page_flowers;
+          this.current = page;
+        }
+
+        this.createNewFlowers();
+      }
+    }
+  }, {
+    key: "addMonth",
+    value: function addMonth(month) {
+      this.months.push(+month.value);
+      this.renderFlowers();
+    }
+  }, {
+    key: "removeMonth",
+    value: function removeMonth(month) {
+      if (this.months.indexOf(+month.value) > -1) this.months.splice(this.months.indexOf(+month.value), 1);
+      this.renderFlowers();
+    }
+  }, {
+    key: "setBees",
+    value: function setBees(bee) {
+      this.bee = bee;
+      this.renderFlowers();
+    }
+  }, {
+    key: "renderFlowers",
+    value: function renderFlowers() {
+      console.log("RenderingFlowers");
+      filterFlowers(this);
+      generatePagination(this);
+      this.createNewFlowers();
+    }
+  }]);
+
+  return Flowers;
+}();
+
+function renderPagination(flowers) {
+  var pagination_div = document.querySelector('.pagination');
+  pagination_div.innerHTML = "";
+
+  for (var i = 0; i < flowers.pages; i++) {
+    var span = document.createElement("span");
+    span.innerHTML = "" + (i + 1);
+    span.classList.add("page");
+    if (i + 1 === flowers.current) span.classList.add("current");
+    span.addEventListener('click', function () {
+      flowers.goToPage(+this.innerHTML);
+    });
+    pagination_div.appendChild(span);
+  }
+}
+
+function generatePagination(flowers) {
+  console.log("Generating Pagination");
+  if (flowers.filtered_flowers.length <= 12) flowers.page_flowers = flowers.filtered_flowers;else flowers.page_flowers = flowers.filtered_flowers.slice(0, 12);
+  if (flowers.filtered_flowers.length / 12 > 1) flowers.pages = Math.floor(flowers.filtered_flowers.length / 12 + 1);else flowers.pages = 1;
+}
+
+function filterFlowers(flowers) {
+  console.log("Filtering");
+  flowers.months.sort(function (a, b) {
+    return a - b;
+  });
+  flowers.filtered_flowers = flowers.flowers.filter(function (flower) {
+    if (containsAnyById(flower.months, this.months)) return flower;else if (flower.bees.indexOf(this.bee) > -1) return flower;else if (this.bee === "Nenhuma" && !this.months.length) return flower;
+  }, flowers);
+}
+
+function containsAnyById(array1, array2) {
+  if (!array1.length || !array2.length) return false;
+  var i = 0;
+  var j = 0;
+
+  while (true) {
+    if (array1[i].id > array2[j]) ++j;else if (array1[i].id < array2[j]) ++i;else {
+      return true;
+    }
+    if (!array1[i] || !array2[j]) return false;
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Flowers);
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Flowers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Flowers */ "./resources/js/Flowers.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+
 document.addEventListener('DOMContentLoaded', function () {
-  // Iniciando o selecte do materialize
-  var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems, {});
-  var bees = document.getElementById("bees");
-  var bees_button = document.querySelector('.bees button');
-  var inputs = document.querySelectorAll('form input[type="text"], textarea'); // Escondendo o select input do materialize
+  // Iniciando o select do materialize
+  var select_elems = document.querySelectorAll('select');
+  var select_instances = M.FormSelect.init(select_elems, {}); // Iniciando o dropdown do materialize
 
-  instances[0].input.style.visibility = "hidden";
-  instances[0].input.style.height = "0"; // Adicionando a funcionalidade de abrir o modal do select para o campo de abelhas
+  var drop_elems = document.querySelectorAll('.dropdown-trigger');
+  var drop_instances = M.Dropdown.init(drop_elems, {
+    coverTrigger: false,
+    alignment: 'right',
+    constrainWidth: false
+  }); // Escondendo o select input do materialize
 
-  if (bees) bees.addEventListener('click', function (e) {
-    e.preventDefault();
-    instances[0].dropdown.open();
-  }); // Adicionando a funcionalidade de abrir o modal do select para o botão de adicionar abelhas
+  if (select_instances.length) {
+    select_instances[0].input.style.visibility = "hidden";
+    select_instances[0].input.style.height = "0";
+    var bees = document.getElementById("bees");
+    var bees_button = document.querySelector('.bees button'); // Adicionando a funcionalidade de abrir o modal do select para o campo de abelhas
 
-  if (bees_button) bees_button.addEventListener('click', function (e) {
-    e.preventDefault();
-    instances[0].dropdown.open();
-  }); // Criando as tags das abelhas de acordo com as seleções do usuário
+    if (bees) bees.addEventListener('click', function (e) {
+      e.preventDefault();
+      select_instances[0].dropdown.open();
+    }); // Adicionando a funcionalidade de abrir o modal do select para o botão de adicionar abelhas
 
-  if (instances[0].input.value.length) populateBeesTags(instances[0].input.value.split(','), bees);
-  elems[0].addEventListener('change', function () {
-    bees.innerHTML = '';
-    populateBeesTags(instances[0].input.value.split(','), bees);
-  }); // Removendo o feedback visual de error quando o usuário for mudar o campo que está com erro
+    if (bees_button) bees_button.addEventListener('click', function (e) {
+      e.preventDefault();
+      select_instances[0].dropdown.open();
+    }); // Criando as tags das abelhas de acordo com as seleções do usuário
 
+    if (select_instances[0].input.value.length) populateBeesTags(select_instances[0].input.value.split(','), bees);
+    select_elems[0].addEventListener('change', function () {
+      bees.innerHTML = '';
+      var new_bees = select_instances[0].input.value.split(',');
+      populateBeesTags(new_bees, bees);
+
+      if (flowers) {
+        flowers.setBees(new_bees[0]);
+      }
+    });
+  } // Buscando a div responsável por mostrar as flores
+
+
+  var parent_div = document.querySelector(".flowers");
+  var flowers = null;
+
+  if (parent_div) {
+    flowers = new _Flowers__WEBPACK_IMPORTED_MODULE_0__["default"](JSON.parse(parent_div.getAttribute('data-flowers')), parent_div);
+    flowers.createNewFlowers(); // Definindo funcionalidade de troca da página para sa setas de navegação
+
+    var next = document.querySelector('.next');
+    next.addEventListener('click', function () {
+      flowers.goToPage(flowers.current + 1);
+    });
+    var prev = document.querySelector('.prev');
+    prev.addEventListener('click', function () {
+      flowers.goToPage(flowers.current - 1);
+    });
+  } // Removendo o feedback visual de error quando o usuário for mudar o campo que está com erro
+
+
+  var inputs = document.querySelectorAll('form input[type="text"], textarea');
   inputs.forEach(function (input) {
     input.addEventListener('focus', function (e) {
       if (this.classList.contains('error')) this.classList.remove('error');
     });
+  }); // Adicionando à instância das flores os meses que foram selecionados
+
+  var months = document.querySelectorAll('.month input');
+  if (months) months.forEach(function (months) {
+    months.addEventListener('click', function () {
+      if (flowers) {
+        if (this.checked) flowers.addMonth(this);else flowers.removeMonth(this);
+      }
+    });
   });
-});
+}); // Criando o display das tags de cada abelha selecionada
 
 function populateBeesTags(bees_selected, bees_element) {
   bees_selected.forEach(function (bee) {
-    var span = document.createElement("p");
-    span.classList.add('bee_tag');
-    span.innerHTML = bee;
-    bees_element.appendChild(span);
+    if (bee !== "Nenhuma") {
+      var p = document.createElement("p");
+      p.classList.add('bee_tag');
+      p.innerHTML = bee;
+      bees_element.appendChild(p);
+    }
   });
 }
 
