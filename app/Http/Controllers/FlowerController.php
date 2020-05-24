@@ -58,7 +58,10 @@ class FlowerController extends Controller
 
         $data = $request->all();
 
-        $path = $request->file('file')->store('flowers');
+        $image_name = $request->file('file')->getClientOriginalName();
+        $request->file('file')->storeAs('public', $image_name);
+
+        $path = 'storage/' . $image_name;
 
         $flower = Flower::Create([
             'name' => $data['name'],
