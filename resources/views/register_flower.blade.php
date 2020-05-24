@@ -81,7 +81,7 @@
     @enderror
 
     <div class="action_buttons">
-      <a class="cancel_button">Cancelar</a>
+      <a href="{{route('home')}}" class="cancel_button">Cancelar</a>
       <button class="button" type="submit">Cadastrar flor</button>
     </div>
   </form>
