@@ -46,7 +46,7 @@ class FlowerController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name'          => 'required|string|unique:flowers',
-            'species'       => 'required|string|unique:flowers',
+            'species'       => 'required|string',
             'description'   => 'required|string',
             'file'          => 'required|file|image',
             'bees'          => 'required|array',
