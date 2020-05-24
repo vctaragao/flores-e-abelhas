@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'FlowerController@index');
+Route::get('/', 'FlowerController@index')->name('home');
 Route::get('flor/criar', 'FlowerController@create')->name('flower.create');
 Route::post('flor', 'FlowerController@store')->name('flower.store');
 

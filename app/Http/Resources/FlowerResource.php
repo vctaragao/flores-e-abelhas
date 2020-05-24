@@ -19,7 +19,7 @@ class FlowerResource extends JsonResource
             'name'  => $this->name,
             'image' => asset($this->image),
             'description'   => $this->description,
-            'bees'  => $this->bees,
+            'bees'  => $this->bees()->pluck('name'),
             'months'    => $this->months
         ];
     }

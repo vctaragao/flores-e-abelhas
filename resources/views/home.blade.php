@@ -13,7 +13,8 @@
       <div id="bees"></div>
       <span class="material-icons">arrow_drop_down</span>
     </div>
-    <select id="select-bees" multiple name="bees[]">
+    <select id="select-bees">
+      <option value="Nenhuma" selected>Nenhuma</option>
       @foreach ($bees as $bee)
       <option value="{{$bee->id}}">{{$bee->name}}</option>
       @endforeach
@@ -29,10 +30,19 @@
       </div>
       @endforeach
     </div>
+
   </form>
+
+  <div class="flowers" data-flowers="{{json_encode($flowers)}}"></div>
 </main>
 @endsection
 
 @section('footer')
-<footer></footer>
+<footer class="home_footer_container">
+  <div class="pagination_container">
+    <span class="material-icons prev">navigate_before</span>
+    <div class="pagination"></div>
+    <span class="material-icons next">keyboard_arrow_right</span>
+  </div>
+</footer>
 @endsection

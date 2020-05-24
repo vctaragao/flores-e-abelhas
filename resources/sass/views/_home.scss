@@ -1,4 +1,6 @@
 .main_home_container {
+    padding-bottom: 2rem;
+
     .bees {
         display: flex;
         justify-content: space-between;
@@ -29,4 +31,42 @@
             z-index: -1;
         }
     }
+
+    .flowers {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 2rem;
+
+        gap: 10px 2%;
+
+        .flower {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            justify-self: center;
+            align-self: center;
+
+            &_image {
+                border-radius: 50%;
+                width: 60.66px;
+                height: 60.14px;
+                overflow: hidden;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    max-width: initial;
+                    width: 150%;
+                }
+            }
+        }
+    }
+}
+
+footer.home_footer_container {
+    padding-bottom: 2rem;
 }

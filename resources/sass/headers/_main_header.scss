@@ -10,6 +10,10 @@
             color: $strong-color;
             cursor: pointer;
             font-weight: bold;
+
+            ul li a {
+                color: $strong-color;
+            }
         }
     }
 
