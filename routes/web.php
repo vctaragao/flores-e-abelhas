@@ -18,4 +18,6 @@ Route::get('/', 'FlowerController@index');
 Route::get('flor/criar', 'FlowerController@create')->name('flower.create');
 Route::post('flor', 'FlowerController@store')->name('flower.store');
 
+Route::get('abelha/criar', 'BeeController@create')->name('bee.create');
+Route::post('abelha', 'BeeController@store')->name('bee.store');
 // Route::post('flower', 'FlowerController@store');

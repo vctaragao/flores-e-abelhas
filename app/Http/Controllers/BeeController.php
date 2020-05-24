@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Bee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
-class BeesController extends Controller
+
+class BeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +26,7 @@ class BeesController extends Controller
      */
     public function create()
     {
-        //
+        return view('register_bee');
     }
 
     /**
@@ -35,7 +37,22 @@ class BeesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name'          => 'required|string|unique:bees',
+            'species'       => 'required|string',
+        ], $this->error_messages);
+
+        if ($validator->fails())
+            return back()->withErrors($validator)->withInput();
+
+        $data = $request->all();
+
+        Bee::Create([
+            'name'      => $data['name'],
+            'species'   => $data['species']
+        ]);
+
+        redirect('/');
     }
 
     /**
