@@ -44,5 +44,16 @@
     <div class="pagination"></div>
     <span class="material-icons next">keyboard_arrow_right</span>
   </div>
+  @if (@session('success'))
+  <div class="toast_action" data-message="{{@session('success')}}"></div>
+  @endif
 </footer>
+
+@if (@session('success'))
+<script>
+  window.onload = function (){
+    const message = document.querySelector('.toast_action').getAttribute('data-message');
+    M.toast({html: "" + message })} 
+</script>
+@endif
 @endsection

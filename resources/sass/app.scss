@@ -164,6 +164,16 @@ form {
     }
 }
 
+.toast {
+    background-color: $strong-color !important;
+}
+
+.toast_action {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
 
 /* === VIEWS === */
 @import "./views/flower_register";

@@ -73,7 +73,7 @@ class FlowerController extends Controller
         $flower->bees()->attach($data['bees']);
         $flower->months()->attach($data['months']);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Flor adicionada com sucesso');
     }
 
     /**

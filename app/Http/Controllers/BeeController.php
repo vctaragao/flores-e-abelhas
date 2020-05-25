@@ -52,7 +52,7 @@ class BeeController extends Controller
             'species'   => $data['species']
         ]);
 
-        redirect('/');
+        return redirect('/')->with('success', 'Abelha adicionada com sucesso');
     }
 
     /**
