@@ -14,6 +14,34 @@ document.addEventListener('DOMContentLoaded', function () {
     constrainWidth: false
   });
 
+  // Iniciando o modal do materialize
+  var modal_elems = document.querySelectorAll('.modal');
+  var modal_instances = M.Modal.init(modal_elems, {});
+
+
+  // Buscando a div responsável por mostrar as flores
+  const parent_div = document.querySelector(".flowers");
+  let flowers = null;
+  if (parent_div) {
+    const flowers_arr = JSON.parse(parent_div.getAttribute('data-flowers'));
+
+    flowers = new Flowers(flowers_arr, parent_div, modal_instances);
+    flowers.createNewFlowers();
+
+
+    // Definindo funcionalidade de troca da página para sa setas de navegação
+    let next = document.querySelector('.next');
+    next.addEventListener('click', function () {
+      flowers.goToPage(flowers.current + 1);
+    });
+
+    let prev = document.querySelector('.prev');
+    prev.addEventListener('click', function () {
+      flowers.goToPage(flowers.current - 1);
+    });
+
+  }
+
 
   // Escondendo o select input do materialize
   if (select_instances.length) {
@@ -56,26 +84,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-  // Buscando a div responsável por mostrar as flores
-  const parent_div = document.querySelector(".flowers");
-  let flowers = null;
-  if (parent_div) {
-
-    flowers = new Flowers(JSON.parse(parent_div.getAttribute('data-flowers')), parent_div)
-    flowers.createNewFlowers();
-
-
-    // Definindo funcionalidade de troca da página para sa setas de navegação
-    let next = document.querySelector('.next');
-    next.addEventListener('click', function () {
-      flowers.goToPage(flowers.current + 1);
-    });
-
-    let prev = document.querySelector('.prev');
-    prev.addEventListener('click', function () {
-      flowers.goToPage(flowers.current - 1);
-    });
-  }
 
   // Removendo o feedback visual de error quando o usuário for mudar o campo que está com erro
   let inputs = document.querySelectorAll('form input[type="text"], textarea');

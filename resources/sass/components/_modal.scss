@@ -1,0 +1,57 @@
+.modal {
+
+    width: 90% !important;
+
+    .modal_header {
+        span {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .modal-content {
+        padding-bottom: 0;
+
+        h4 {
+            color: $strong-color;
+            font-size: 16.4514px;
+            font-weight: bold;
+            line-height: 16px;
+        }
+
+        p {
+            color: $modal-text-color;
+        }
+    }
+
+    .modal-footer {
+        a {
+            color: $strong-color
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    .modal {
+        width: 40rem !important;
+
+        .modal_header {
+            overflow: hidden;
+            height: 10rem;
+
+            img {
+                width: 100%;
+                position: relative;
+                z-index: -1;
+                transform: translateY(-50%);
+                top: 50%;
+            }
+        }
+    }
+}

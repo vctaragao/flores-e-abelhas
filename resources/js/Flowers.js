@@ -1,5 +1,7 @@
+import FlowerModal from './FlowerModal';
+
 class Flowers {
-  constructor(flowers, parent_div, months = [], bee = "Nenhuma") {
+  constructor(flowers, parent_div, modal_instances, months = [], bee = "Nenhuma") {
     this.flowers = flowers;
     this.parent_div = parent_div;
     this.months = months;
@@ -8,18 +10,16 @@ class Flowers {
     this.page_flowers = [];
     this.pages = 1;
     this.current = 1;
+    this.modal_instances = modal_instances;
 
     generatePagination(this);
   }
 
   createNewFlowers() {
-    console.log("CreateNewFlowers");
-    console.log("----- OVER -----");
     this.parent_div.innerHTML = "";
     this.page_flowers.forEach(flower => {
       let div = document.createElement("div");
       div.classList.add('flower');
-
       let img_div = document.createElement("div");
       img_div.classList.add("flower_image");
       let img = document.createElement("img");
@@ -32,17 +32,17 @@ class Flowers {
 
       div.appendChild(img_div);
       div.appendChild(name);
+      div.setAttribute('id', flower.id);
 
       this.parent_div.appendChild(div);
-
     });
 
     renderPagination(this);
+    setFlowerToOpenFlowerModal(this);
   }
 
 
   goToPage(page) {
-    console.log("Going to page:", page);
     if (page > 0 && page !== this.current) {
       const start = (page - 1) * 12;
       const end =
@@ -74,7 +74,6 @@ class Flowers {
   }
 
   renderFlowers() {
-    console.log("RenderingFlowers");
     filterFlowers(this);
     generatePagination(this);
     this.createNewFlowers();
@@ -103,7 +102,6 @@ function renderPagination(flowers) {
 }
 
 function generatePagination(flowers) {
-  console.log("Generating Pagination");
   if (flowers.filtered_flowers.length <= 12)
     flowers.page_flowers = flowers.filtered_flowers;
   else
@@ -115,9 +113,31 @@ function generatePagination(flowers) {
     flowers.pages = 1;
 }
 
+function setFlowerToOpenFlowerModal(flowers) {
+  const flowers_element = document.querySelectorAll('.flower');
+  flowers_element.forEach(flower => {
+    let flower_obj = flowers.flowers.filter((f) => {
+      if (+f.id === +flower.id) {
+        return flower;
+      }
+    })
+    flower.addEventListener('click', function () {
+      let modal_body = document.querySelector('#modal1 .modal-content');
+      let modal_header = document.querySelector('#modal1 .modal_header');
+      let modal = new FlowerModal(flower_obj[0]);
+      modal.generateModal(modal_body, modal_header);
+      flowers.modal_instances[0].open();
+
+      let close_modal = document.querySelector("#modal1 span");
+      close_modal.addEventListener('click', () => {
+        flowers.modal_instances[0].close();
+      })
+    });
+  });
+}
+
 function filterFlowers(flowers) {
 
-  console.log("Filtering");
 
   flowers.months.sort(function (a, b) { return a - b });
 
@@ -154,5 +174,7 @@ function containsAnyById(array1, array2) {
 
   }
 }
+
+
 
 export default Flowers;
