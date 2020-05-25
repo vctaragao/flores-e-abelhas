@@ -1,0 +1,19 @@
+image: "registry.gitlab.com/vct.aragao/sistema-de-gestao-forro"
+
+stages:
+  - deploy
+
+deploy-dev:
+  stage: deploy
+  script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - ~/.composer/vendor/bin/envoy run deploy --commit="$CI_COMMIT_SHA" --branch="master" --server="206.189.216.247" --dirname="flower_bees"
+  environment:
+    name: development
+    url: http://206.189.216.247
+  only:
+    - development
