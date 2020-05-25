@@ -17,11 +17,50 @@
         }
     }
 
+    .desktop_menu {
+        display: none;
+    }
+
 
     h1 {
         color: $strong-color;
         font-weight: bold;
         font-size: 30px;
         line-height: 39px;
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    .main_header_container {
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
+        margin: auto;
+        position: relative;
+        padding-top: 3rem;
+
+        .menu {
+            display: none;
+        }
+
+        .desktop_menu {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                display: block;
+                padding: .25rem;
+                text-align: center;
+                border: $submit-border;
+
+                &:first-child {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
     }
 }

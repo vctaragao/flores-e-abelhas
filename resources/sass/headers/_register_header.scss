@@ -20,3 +20,22 @@
         letter-spacing: 0.03em;
     }
 }
+
+@media only screen and (min-width: 1366px) {
+    .register_header_container {
+        img {
+            position: absolute;
+            top: -38rem;
+            left: 57%;
+            transform: translateX(-50%) rotate(-15.98deg);
+            z-index: -1;
+            max-width: initial;
+            width: 100%;
+            height: initial;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+    }
+}

@@ -1,9 +1,11 @@
 @extends('headers.main_header')
-@section('title', 'Flores')
+@section('title', 'Calendário Flores')
 
 @section('main')
+
 <main class="main_home_container">
-  <p>Neste calendário encontram-se diversas flores. Podem ser agupada pelos meses que florescem e o pelo tipo de
+  <p class="page_description">Neste calendário encontram-se diversas flores.<br />Podem ser agupada pelos meses que
+    florescem e o pelo tipo de
     abelhaquepoliniza a flor.</p>
 
   <form>

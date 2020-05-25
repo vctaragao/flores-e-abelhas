@@ -15,11 +15,14 @@
         <li><a href="{{route('flower.create')}}">Cadastrar flores</a></li>
         <li class="divider" tabindex="-1"></li>
         <li><a href="{{route('bee.create')}}">Cadastrar Abelhas</a></li>
-
       </ul>
     </div>
   </div>
   <h1>@yield('title')</h1>
+  <div class="desktop_menu">
+    <a class="cancel_button" href="{{route('flower.create')}}">Cadastrar flores</a>
+    <a class="cancel_button" href="{{route('bee.create')}}">Cadastrar Abelhas</a>
+  </div>
 </header>
 
 @yield('main')

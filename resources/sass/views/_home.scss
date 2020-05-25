@@ -46,6 +46,7 @@
             align-items: center;
             justify-self: center;
             align-self: center;
+            cursor: pointer;
 
             &_image {
                 border-radius: 50%;
@@ -69,4 +70,24 @@
 
 footer.home_footer_container {
     padding-bottom: 2rem;
+}
+
+
+@media only screen and (min-width: 1366px) {
+    .main_home_container {
+        width: 70%;
+
+        .page_description {
+            width: 42%;
+        }
+
+        .months {
+            grid-template-columns: repeat(12, 1fr);
+        }
+
+        .flowers .flower .flower_image {
+            width: 10rem;
+            height: 10rem;
+        }
+    }
 }

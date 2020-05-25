@@ -83,3 +83,24 @@ main.register_flower_container {
         }
     }
 }
+
+@media only screen and (min-width: 1366px) {
+    main.register_flower_container {
+        .bees #bees {
+            width: 95%;
+        }
+
+        .action_buttons {
+            width: 30%;
+        }
+
+        .input_container_upload_field .file_upload {
+            width: 100px;
+            height: 100px;
+
+            span {
+                font-size: 2.5rem;
+            }
+        }
+    }
+}

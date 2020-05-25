@@ -1,3 +1,9 @@
 footer.register_bee_footer_container {
     position: absolute;
 }
+
+@media only screen and (min-width: 1366px) {
+    footer.register_bee_footer_container {
+        width: 100%;
+    }
+}

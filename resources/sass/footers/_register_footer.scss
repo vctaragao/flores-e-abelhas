@@ -7,3 +7,12 @@
         width: 30%;
     }
 }
+
+@media only screen and (min-width: 1366px) {
+    .register_footer_container {
+        img {
+            width: 15%;
+        }
+    }
+
+}
