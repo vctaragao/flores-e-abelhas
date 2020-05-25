@@ -44,6 +44,7 @@ git reset --hard {{ $commit }}
 @task('run_composer')
 echo "Starting deployment ({{ $release }})"
 cd {{ $new_release_dir }}
+composer dump-autoload
 composer install --prefer-dist --no-scripts -q -o
 @endtask
 
